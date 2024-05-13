@@ -55,3 +55,56 @@ end
 println(sum_even_fibonacci_not_exceeding(4_000_000))
 
 end # ProjectEuler2
+
+module ProjectEuler3
+
+# Project Euler - Problem 3
+
+# This problem asks for the largest prime divisor of a number. I use the
+# Primes.jl library for this. To set that up, in a Julia REPL, use the
+# following commands:
+#
+#   using Pkg
+#   Pkg.add("Primes")
+
+using Primes
+
+function largest_prime_factor_of(n)
+  maximum = 0
+  for (factor, _multiplicity) in Primes.eachfactor(n)
+    if factor > maximum
+      maximum = factor
+    end
+  end
+  return maximum
+end
+
+println(largest_prime_factor_of(600851475143))
+
+end # ProjectEuler3
+
+module ProjectEuler4
+
+# Project Euler 4
+
+# This problem asks for the largest palindromic number that's the product
+# of two three digit numbers.
+
+function largest_palindrome_product(a0, a1)
+  maximum = 0
+  for a in a0:(a1-1)
+    for b in (a+1):a1
+      prod = a * b
+      text = string(prod)
+      reversed = reverse(text)
+      if text == reversed && prod > maximum
+        maximum = prod
+      end
+    end
+  end
+  return maximum
+end
+
+println(largest_palindrome_product(100, 999))
+
+end
