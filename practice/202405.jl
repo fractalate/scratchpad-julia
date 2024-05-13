@@ -1,4 +1,6 @@
-# Practice Session - May 12, 2024
+println("Practice Session - May 12, 2024")
+
+module ProjectEuler1
 
 # Project Euler - Problem 1
 
@@ -25,3 +27,31 @@ end
 
 println(find_sum_of_multiples_of_3_or_5_below(1000))
 
+end # ProjectEuler1
+
+module ProjectEuler2
+
+# Project Euler - Problem 2
+
+# This problem asks for the sum of the even Fibonacci numbers not exceeding
+# four million. This solution generates the sequence of numbers and totals
+# the even ones.
+
+function sum_even_fibonacci_not_exceeding(n)
+  a = 1
+  b = 2
+  total = 0
+  while b <= n
+    if b % 2 == 0
+      total += b
+    end
+    c = a + b
+    a = b
+    b = c
+  end
+  return total
+end
+
+println(sum_even_fibonacci_not_exceeding(4_000_000))
+
+end # ProjectEuler2
