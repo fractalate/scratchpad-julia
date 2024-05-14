@@ -107,4 +107,75 @@ end
 
 println(largest_palindrome_product(100, 999))
 
+end # ProjectEuler4
+
+module ProjectEuler5
+
+# Project Euler 5
+
+# This problem asks for the smalles number evenly divisible by the numbers
+# 1 to 20. This could be done by finding successive LCMs.
+
+function smallest_multiple_of_numbers_to(n)
+  least = 1
+  for i in 2:n
+    least = lcm(least, i)
+  end
+  return least
 end
+
+println(smallest_multiple_of_numbers_to(20))
+
+end # ProjectEuler5
+
+module ProjectEuler6
+
+# Project Euler 6
+
+# This problem asks for the difference between two sums. The first sum is
+# the sum of squares which has a formula to calculate directly:
+# n*(n+1)*(2n+1)/6. The other sum is the sum of consecutive integers squared
+# which also has a formula to calculate directly: (n*(n+1)/2)^2.
+
+function sum_of_integers(n)
+  return n * (n + 1) ÷ 2
+end
+
+function sum_of_integers_squared(n)
+  result = sum_of_integers(n)
+  return result * result
+end
+function sum_of_squares(n)
+  return n * (n + 1) * (2 * n + 1) ÷ 6
+end
+
+function difference_between_sums(n)
+  return sum_of_integers_squared(n) - sum_of_squares(n)
+end
+
+println(difference_between_sums(100))
+
+end # ProjectEuler6
+
+module ProjectEuler7
+
+using Primes
+
+# Project Euler 7
+
+# This problem asks to identify the 10001st prime number, where 13 is
+# considered the 6th prime.
+
+function find_nth_prime(n)
+  last = 2
+  n -= 1
+  while n > 0
+    last = Primes.nextprime(last + 1)
+    n -= 1
+  end
+  return last
+end
+
+println(find_nth_prime(10001))
+
+end # ProjectEuler7
